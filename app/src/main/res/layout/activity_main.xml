@@ -16,7 +16,7 @@
         <LinearLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="165dp"
+                android:layout_height="180dp"
                 android:background="#38c5c6"
                 android:orientation="vertical">
 
@@ -204,7 +204,7 @@
             android:layout_alignParentRight="true"
             android:background="@android:color/transparent"
             android:paddingTop="114dp"
-            android:paddingRight="40dp"
+            android:paddingRight="50dp"
             app:srcCompat="@drawable/equal" />
 
 </RelativeLayout>

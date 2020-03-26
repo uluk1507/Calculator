@@ -11,8 +11,17 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String runninNumber = "";
+
     TextView resultsView;
+
+    public enum Operation {ADD, SUBTRACT, DIVIDE, MULTIPLY, EQUAL}
+
+    String runningNumber = "";
+    String leftValueStr = "";
+    String rightValueStr = "";
+    Operation currentOperation;
+    int result = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,45 +109,88 @@ public class MainActivity extends AppCompatActivity {
                 numberPressed(0);
             }
         });
+
         divideBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                processOperation(Operation.DIVIDE);
             }
         });
         multiplyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v) {                processOperation(Operation.MULTIPLY);
             }
         });
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                processOperation(Operation.ADD);
 
             }
         });
         subtractBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v) {                processOperation(Operation.SUBTRACT);
             }
         });
+
+
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                leftValueStr = "";
+                rightValueStr = "";
+                runningNumber = "";
+                result = 0;
+                currentOperation = null;
+                resultsView.setText("0");
 
             }
         });
-
-        calcBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
+        calcBtn.setOnClickListener(new View.OnClickListener() {            @Override
             public void onClick(View v) {
+                processOperation(Operation.EQUAL);
+
             }
         });
     }
 
+    void processOperation(Operation operation) {
+        if (currentOperation != null) {
+
+            if (runningNumber != "") {
+                rightValueStr = runningNumber;
+                runningNumber = "";
+
+                switch (currentOperation) {
+                    case ADD:
+                        result = Integer.parseInt(leftValueStr) + Integer.parseInt(rightValueStr);
+                        break;
+                    case SUBTRACT:
+                        result = Integer.parseInt(leftValueStr) - Integer.parseInt(rightValueStr);
+                        break;
+                    case MULTIPLY:
+                        result = Integer.parseInt(leftValueStr) * Integer.parseInt(rightValueStr);
+                        break;
+                    case DIVIDE:
+                        result = Integer.parseInt(leftValueStr) / Integer.parseInt(rightValueStr);
+                        break;
+                }
+
+                leftValueStr = String.valueOf(result);
+                resultsView.setText(leftValueStr);
+            }
+
+        } else {
+
+            leftValueStr = runningNumber;
+            runningNumber = "";
+
+        }
+        currentOperation = operation;
+    }
+
     void numberPressed(int number) {
-        runninNumber += String.valueOf(number);
-        resultsView.setText(runninNumber);
+        runningNumber += String.valueOf(number);
+        resultsView.setText(runningNumber);
     }
 }
