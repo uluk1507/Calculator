@@ -112,12 +112,14 @@ public class MainActivity extends AppCompatActivity {
 
         divideBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {                processOperation(Operation.DIVIDE);
+            public void onClick(View v) {
+                processOperation(Operation.DIVIDE);
             }
         });
         multiplyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {                processOperation(Operation.MULTIPLY);
+            public void onClick(View v) {
+                processOperation(Operation.MULTIPLY);
             }
         });
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -129,10 +131,10 @@ public class MainActivity extends AppCompatActivity {
         });
         subtractBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {                processOperation(Operation.SUBTRACT);
+            public void onClick(View v) {
+                processOperation(Operation.SUBTRACT);
             }
         });
-
 
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +148,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        calcBtn.setOnClickListener(new View.OnClickListener() {            @Override
+        calcBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 processOperation(Operation.EQUAL);
 
